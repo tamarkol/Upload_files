@@ -1,0 +1,171 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="stepty.aspx.cs" Inherits="stepty" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.Triggersw3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
+<head runat="server">
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+
+		<title>jQuery Stepy - A Wizard Plugin</title>
+
+		<link type="text/css" rel="stylesheet" href="css/jquery.stepy.css" />
+
+		  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+		<!-- Optionaly -->
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.stepy.min.js"></script>
+
+		<style type="text/css">
+			/* This CSS does not belong to the plugin. */
+			body { background: url('img/background.gif'); font: normal 11px verdana; }
+			
+			a { color: #2C8CBD; text-decoration: none; }
+			a:hover { color: #48A5D4; }
+			
+			a#coffee {
+				background: url('img/coffee.png') 6px 2px no-repeat #DC5; border: 1px solid #D9C640; color: #FFF; display: block; float: right; font-size: 10px; font-weight: bold; letter-spacing: .9px; margin-right: 9px; padding: 4px 5px 4px 26px; text-decoration: none;
+				-khtml-border-radius: 4px; -moz-border-radius: 4px; -opera-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+			}
+			a#coffee:hover { text-decoration: underline; }
+			
+			span.comment { color: #999; font: 12px monospace; letter-spacing: .1px; margin-bottom: 7px; margin-top: 5px; }
+			
+			div#content { background-color: #FFF; border: 1px solid #DEDEDE; box-shadow: 0 1px 3px rgba(100, 100, 100, 0.4); margin: 0 auto; padding: 15px; width: 1100px; min-height: 510px; }
+			
+			div.description { color: #555; letter-spacing: .1px; margin-bottom: 15px; margin-top: 10px; text-align: left; }
+			
+			div.description-code { color: #555; letter-spacing: .1px; margin-bottom: 10px; text-indent: 7px; }
+
+			div#menu-feature { color: #AAA; float: left; margin-bottom: 20px; }
+			div#menu-feature a { float: left; width: 120px }
+			div#menu-feature a.disabled { color: #999; cursor: default; }
+			div#menu-feature a.selected { color: #2C8CBD; cursor: default; font-weight: bold; }
+
+			div#footer { clear: both; height: 25px; margin-top: 5px; width: 100%; }
+			div#footer div#copy { margin: 0 auto; text-align: center; width: 1100px; }
+			
+			div#header { margin: 0 auto; padding-left: 20px; width: 1130px; }
+			
+			div#menu { color: #AB9927; font: bold 14px 'Lucida Grande', 'Helvetica', 'Times New Roman', serif; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
+			div#menu a { color: #EA9C00; font: bold 10px verdana; letter-spacing: .9px; text-decoration: none; }
+			div#menu a:hover { color: #DC5; font-weight: bold; letter-spacing: .9px; text-decoration: underline; }
+			
+			div.session { clear: both;  font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; margin-top: 24px; text-align: left; }
+			div.session-first { clear: both; font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; text-align: left; }
+			div.session-mini { font: bold 10px verdana; color: #444; letter-spacing: .7px; margin-top: 17px; }
+			
+			div.source { background: #F8F8FF; border: 1px solid #EFEFEF; border-left: 3px solid #CCC; clear: both; color: #444; font: 12px monospace; border-radius: 2px; letter-spacing: .1px; margin-bottom: 7px; margin-top: 15px; padding: 7px; width: 1081px; -khtml-border-radius: 2px; -moz-border-radius: 2px; -opera-border-radius: 2px; -webkit-border-radius: 2px; }
+			div.source div.comment { color: #777; font: 9px verdana; letter-spacing: 0.4px; margin-bottom: 9px; text-align: left; }
+			
+			div#title { font: bold 17px verdana; color: #269; letter-spacing: .7px; margin-bottom: 10px; text-align: left; }
+			div#title span { color: #777; font: 10px verdana; }
+			
+			span#version { color: #777; font: 10px verdana; }
+
+			/* Custom */
+			form#target fieldset img { margin-top: 10px; }
+
+			div#title-target { height: 25px;  margin-left: 215px; margin-top: 2px; }
+			div#title-target ul.stepy-titles li { font-size: 12px; padding: 4px; }
+			div#title-target ul.stepy-titles li:hover { color: #BBB; }
+			div#title-target ul.stepy-titles li.current-step { color: #369; }
+
+			/* Example of dynamic class name */
+			p.default-buttons { margin-top: 30px; }
+		</style>
+
+		
+	</head>
+	<body>
+		<div id="header">
+			
+
+			
+שלום שלום
+			
+			<div class="description">jQuery <strong>Stepy</strong> is a plugin based on FormToWizard that generates a customizable wizard.</div>
+		</div>
+
+		<div id="content">
+			<div id="checkbox-default-demo" class="session-first">With default options using checkbox:</div>
+	
+			<form id="default">
+				<fieldset title="Step 1">
+					<legend>description one</legend>
+					<table cellpadding="15" cellspacing="10">
+                                    <tr>
+                                        <td colspan="2">
+                                            <label class="div-title">
+                                                VoiceMail שלב 1 צור:</label>
+                                        </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="name">
+                                                שם הפרויקט</label>
+                                        </td>
+                                        <td align="right">
+                                            <asp:TextBox ID="tbnameProject" CssClass="textbox" runat="server" Width="234px"></asp:TextBox>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <label>
+                                                סוג הפרויקט</label>
+                                        </td>
+                                        <td align="right">
+                                            <asp:DropDownList ID="DDLtypeProject"  CssClass="textbox" runat="server" 
+                                                Width="234px" >
+                                            </asp:DropDownList>
+                                        </td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        
+                                            <asp:CheckBox ID="chooseExistingProject" runat="server" Text="." 
+                                                oncheckedchanged="chooseExistingProject_CheckedChanged" />
+                                        
+                                          <label>בחירת פרויקט קיים</label>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="DDLexistingProjects" runat="server">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <p>
+                                                צור פרוייקט בו תוכל להקליט הודעתך ולשלוח לרשימת חברים</p>
+                                        </td>
+                                    </tr>
+                                </table>
+				</fieldset>
+	
+				<fieldset title="Step 2">
+					<legend>description two</legend>
+					<label>Nick Name:</label> <input type="text"size="30" />
+					<label>Bio:</label> <textarea rows="5" cols="60"></textarea>
+				</fieldset>
+	
+				<input type="submit" class="finish" value="Finish!" />
+			</form>
+
+		<script type="text/javascript">
+			$(function() {
+
+				$('#default').stepy();
+
+				
+			});
+		</script>
+	</body>
+</html>

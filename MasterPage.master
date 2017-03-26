@@ -1,0 +1,167 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+	
+</script>
+
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+   <meta name="keywords" content="שליחת הודעה, שליחת הודעות, VOICE, הודעה קולית, הודעות קוליות, הודעה, voice mail, הודעות, רשימת תפוצה, רשימות תפוצה, קמפיין בחירות, קמפיין, דיוור טלפוני, דיוור ישיר, message, דיוור, פרסום, crm, שימור לקוחות, קשרי לקוחות, spix">
+   <meta name="description" content="Spix - It speaks for you - מערכת אוטומטית לשליחת הודעות קוליות - אודות" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <meta http-equiv="Content-Type" content="text/x-component" />
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function clearText(obj) {
+			if (obj.value == "סיסמא")
+				obj.type="password";
+            if (obj.value == "שם משתמש" || obj.value == "סיסמא")
+                obj.value = "";
+        }
+    </script>
+    <!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+    <form id="form1" runat="server">
+     <table width="100%">
+        <tr>
+            <td align="center">
+    <div>
+      
+            
+         
+        <table style="width:900px; margin-bottom: 0px;" class="body" border="0">
+            <tr>
+            <td align="center">
+            
+                <asp:Image ID="Image1" runat="server" Height="53px" 
+                    ImageUrl="~/images/Logo.JPG" Width="176px" 
+                    onclick="window.location='HomePage.aspx'"  />
+					
+
+                
+            </td>
+            <td align="center">
+					
+                    <asp:panel ID="Panel_out" runat="server" Height="65px">
+                    <asp:Label ID="L_UserName" runat="server" Width="271px" Height="26px" 
+                        Font-Size="15pt" ForeColor="Black"></asp:Label>
+						
+						<asp:Button ID="B_logOut" CssClass="bt"  runat="server" Text="Log out" 
+                        onclick="Button1_Click"  Width="93px" BackColor="#AA070C" />
+                    </asp:panel>
+
+                        <asp:Panel ID="Pane_login" DefaultButton="t" runat="server" Height="65px"  >
+               
+                                 <asp:TextBox ID="txt_name" runat="server"  
+                                     CssClass="txtboxCor">שם משתמש</asp:TextBox>
+                                
+                                 &nbsp;&nbsp;&nbsp;
+                                 
+                                 <asp:TextBox ID="txt_pass" runat="server"   
+                                     CssClass="txtboxCor">סיסמא</asp:TextBox>
+                               
+                                
+                                 &nbsp;&nbsp;&nbsp;
+                                 <asp:Button   runat="server" ID="t" CssClass="bt small" Text=">>" 
+                                     Width="40px" style="padding-left:10px" PostBackUrl="~/Login.aspx"/>
+                               
+                                 
+                             </asp:Panel>                
+
+
+
+
+
+
+                </td>
+            <td>
+                    
+
+                        &nbsp;
+                </td>
+               
+       
+                  
+                 
+            </tr>
+
+ <%--          <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">
+         
+ 
+            </td>
+           </tr>--%>
+        
+                 <tr>
+                 <td colspan="3" align ="center" style="height:70px;">
+                         <div   align="right" dir="ltr">
+
+<ul dir="ltr" id="cssmenu">
+<li><a href='#'><span>צור קשר</span></a></li>
+  <li><a href='#'><span>אודות</span></a></li>  
+  <li class='has-sub '><a href="dashboard.aspx"><span>חשבון</span></a>
+   <li><a href="HomePage.aspx"><span>דף בית</span></a></li>
+
+      <%--   <ul>
+         <li class='has-sub '><a href="lastProject.aspx"><span>Product 1</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub '><a href='#'><span>Product 2</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Product</span></a></li>
+               <li><a href='#'><span>Sub Product</span></a></li>
+            </ul>
+         </li>
+      </ul>--%>
+   </li>
+    
+ 
+   
+</ul>
+
+                           
+</div>
+</td>
+              </tr>
+ <tr>
+    <td align="center" colspan="2" width="100%" style="height:450px">
+     <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" >
+        
+        </asp:ContentPlaceHolder>
+        </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3">
+        <div style="width:100%;height:40px; background-color:#000000; color:#ffffff">
+            <p>פרטי החברה</p>
+        </div>
+        </td>
+        </tr>
+        </table>
+    </div>
+    </td>
+    </tr>
+    
+          
+       </table>
+    </form>
+    
+
+</body>
+</html>

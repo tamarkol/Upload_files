@@ -1,0 +1,100 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="false" CodeFile="myAccountMenu.master.cs" Inherits="myAccountMenu" %>
+<%@ MasterType VirtualPath="~/MasterPage.master"%>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <asp:ContentPlaceHolder id="head" runat="server">
+                    </asp:ContentPlaceHolder>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $("#frm").dialog(
+            {
+                autoOpen: false,
+                title: "<table><tr><td><img src='images/Logo.JPG' style='width:80px'/></td><td valign='middle' align='center'><span style='padding:10px;'>הודעה קולית חדשה</span></td></tr></table>",
+                modal: true,
+                width: 650,
+                height: 650,
+                close: function (event, ui) { $('#frmStepty').attr('src', "wait.htm") }
+            });
+			$('#frmStepty').attr('src', "stepty.aspx");
+            $("#BaddProject").click(function () {
+                if (document.getElementById("frmStepty").src.indexOf("stepty.aspx")==-1)
+                    $('#frmStepty').attr('src', "stepty.aspx");
+                $("#frm").dialog("open");
+            });
+
+        });
+
+
+</script>
+  
+   <table id="tblMyAccount" width="100%" style="margin-bottom: 0px" border="0">
+    <tr>
+        <td width="60%" align="left" valign="top">
+               <table border="0" width="100%" id="tb2"><tr><td valign="top">
+                  <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server" >
+        
+                </asp:ContentPlaceHolder>
+        </td></tr></table>
+        </td>
+        <td width="40%" valign="top" align="right">
+            <div id='cssmen0u2'>
+                <asp:Panel ID="Panel2" runat="server">
+                    <asp:Button ID="Button2" runat="server" Text="החשבון שלי" CssClass="bt" 
+                        onclick="Button2_Click" />
+                    <br />
+                     <asp:Button ID="t1" runat="server" Text="ניהול פרויקטים" 
+                        CssClass="bt" onclick="Button3_Click" />
+                    <br />
+                     <asp:Button ID="Button5" runat="server" Text="אנשי קשר" CssClass="bt" 
+                        onclick="Button5_Click" />
+                    <br />
+                    <asp:Button ID="Button6" runat="server" Text="מצב חשבון" CssClass="bt" 
+                        onclick="Button6_Click" />
+                    <br />
+                     <asp:Button ID="Button1" runat="server" Text="עדכון פרטים" CssClass="bt" 
+                        onclick="Button1_Click" />
+                          <br />
+                </asp:Panel>
+        </div>
+		<div style="height:200px; vertical-align:bottom">&nbsp;</div>
+		<div >
+			<input type="button" class="btSm" id="BaddProject" value="צור הודעה קולית"  />
+		</div>
+  
+        </td>
+        </tr>
+    </table>
+	<div id="frm" >
+   <!--<iframe  src="projectDetails.aspx" height="480px" width="100%" frameborder="0"/>-->
+ <iframe id="frmStepty" src=""  height="570px" width="600px" frameborder="0"></iframe>
+   </div> 
+   
+   <!-- Google Code for &#1497;&#1493;&#1494;&#1512;&#1497;&#1501; &#1489;&#1502;&#1506;&#1512;&#1499;&#1514; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 989445501;
+var google_conversion_label = "CbA1CLPsphAQ_frm1wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/989445501/?value=0&amp;label=CbA1CLPsphAQ_frm1wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+</asp:Content>
+
+
+

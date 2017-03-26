@@ -1,0 +1,54 @@
+﻿<%@ Master  Language="C#" MasterPageFile="~/MasterPage2.master" AutoEventWireup="true" CodeFile="MasterHeader.master.cs" Inherits="MasterHeader" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <table height="100%" dir="ltr" width="100%" border="0" cellspacing="0" cellpadding="0">  
+    <tr>
+     <td style="background-color:#FEDE27; width:50%"></td>
+    
+    <td>
+     
+		<div class="headerInnerMaster" valign="bottom" >
+        <table height="100%" dir="ltr" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+            <td width="45px" style="background-color:#FEDE27;"></td>
+                <td width="120px" onclick="location.href='home.aspx'">
+                    <img src="images/design/megaphone-logo-inner.png" style="margin-left:-45px;cursor:pointer" onclick="window.location='home.aspx'" />
+                </td>
+               
+                <td id="picHeaderMaster" runat="server" class="divInnerTitleRight"> 
+                    
+                    <asp:Label ID="titlePage" class="title-masterinner" runat="server" ></asp:Label>
+                 </td>
+                
+            </tr>
+        </table>
+         
+        </div> 
+          
+<%--     <div id="headerInnerMaster"  >
+            
+        </div>--%>
+        </td>
+       <td style="width:50%"></td>
+        </tr> 
+        </table>
+<%--
+        <div style="background-color:White; height:1px"></div>
+        <div id="passInnerMaster"></div>
+           <div  style="background-image:url('images/design/dash.png');height:5px">			</div>--%>
+           <div style="background-image: url('images/design/bg-content.png')";>
+           <div  class="widthInner"  >
+           <div align="left"><img src="images/design/spix-logo-inner.png" /></div>
+               
+                                 <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+            </div>
+
+           </div>
+</asp:Content>
+
+
+

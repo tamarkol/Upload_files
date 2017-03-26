@@ -1,0 +1,494 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="MasterPage2" %>
+
+<!DOCTYPE html>
+
+<html lang="en" class="no-js" >
+<head runat="server">
+       <title>Untitled Page</title>
+	 
+ 
+<%--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>--%>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+   <!-- <script src="css/PIE.js" type="text/javascript"></script>-->
+    <script src="js/modernizr.js" type="text/javascript"></script>
+    <!--<script src="js/phPassword.js" type="text/javascript"></script>-->
+	   <meta name="keywords" content="שליחת הודעה, שליחת הודעות, VOICE, הודעה קולית, הודעות קוליות, הודעה, voice mail, הודעות, רשימת תפוצה, רשימות תפוצה, קמפיין בחירות, קמפיין, דיוור טלפוני, דיוור ישיר, message, דיוור, פרסום, crm, שימור לקוחות, קשרי לקוחות, spix" />
+	<meta name="description" content="spix, מערכת לשליחת הודעות קוליות אוטומטיות לרשימות תפוצה ויחידים. ספיקס מציגה חלופה ראויה לדיוור ישיר באמצעות מייל או sms. שלחו הודעה בקולכם ישירות לנמען!" />
+	   <meta name="google-site-verification" content="7-Fr7uxGoBFoLsn5oKyfExRGstAQswpa5Lb_ZehJPkg" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/x-component" />
+  <link href="js/themes/base/jquery.ui.dialog.css" rel="stylesheet" type="text/css" />
+    <link href="js/themes/base/jquery.ui.theme.css" rel="stylesheet" type="text/css" />
+    <link href="js/themes/base/jquery.ui.button.css" rel="stylesheet" type="text/css" />
+    <link href="js/themes/base/jquery.ui.core.css" rel="stylesheet" type="text/css" />
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+     <link href="design.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38390482-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+})();
+
+</script>
+
+
+<!-- start Mixpanel -->
+<script type="text/javascript">
+(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+mixpanel.init("3674b317e9a368476c76a4fdf034cdc4");
+//mixpanel.track("Video play");
+</script>
+<!-- end Mixpanel -->
+
+
+
+
+<!-- End Google Analytics -->
+
+<script>    (function () {
+        var _fbq = window._fbq || (window._fbq = []);
+        if (!_fbq.loaded) {
+            var fbds = document.createElement('script');
+            fbds.async = true;
+            fbds.src = '//connect.facebook.net/en_US/fbds.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(fbds, s);
+            _fbq.loaded = true;
+        }
+        _fbq.push(['addPixelId', '718325114895489']);
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', 'PixelInitialized', {}]);
+</script>
+
+
+
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=718325114895489&amp;ev=NoScript" /></noscript>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    
+        
+    </asp:ContentPlaceHolder>
+    	
+	<script type="text/javascript">
+      
+/**   
+ * HTML5 Placeholder Text jQuery Fallback with Modernizr
+ *
+ * @url     http://uniquemethod.com/
+ * @author  Unique Method
+ */
+$(function()
+{
+    // check placeholder browser support
+    if (!Modernizr.input.placeholder)
+    {
+     
+        // set placeholder values
+        $(this).find('[placeholder]').each(function()
+        {
+            if ($(this).val() == '') // if field is empty
+            {
+                $(this).val( $(this).attr('placeholder') );
+            }
+        });
+         
+        // focus and blur of placeholders
+        $('[placeholder]').focus(function()
+        {
+            if ($(this).val() == $(this).attr('placeholder'))
+            {
+                $(this).val('');
+                $(this).removeClass('placeholder');
+            }
+        }).blur(function()
+        {
+            if ($(this).val() == '' || $(this).val() == $(this).attr('placeholder'))
+            {
+                $(this).val($(this).attr('placeholder'));
+                $(this).addClass('placeholder');
+            }
+        });
+         
+        // remove placeholders on submit
+        $('[placeholder]').closest('form').submit(function()
+        {
+            $(this).find('[placeholder]').each(function()
+            {
+                if ($(this).val() == $(this).attr('placeholder'))
+                {
+                    $(this).val('');
+                }
+            })
+        });
+         
+    }
+});
+
+
+	    $(document).ready(function () {
+
+        $('#scrollup').click(function(){
+    $("html, body").animate({ scrollTop: 0 }, 600);
+    return false;
+    });
+
+
+
+	        $("#bt_openLogin").click(function () {
+	            $("#panel_login").toggle("slow");
+	        });
+	        //$("#ctl00_ctl00_panelMailUser").click(function () {
+	         //   $("#divLogout").toggle("slow");
+	       // });
+//                $("#tdLogin").click(function () {
+//	            $("#panel_login").toggle("slow");
+	        });
+	
+	</script>
+    <script type="text/javascript">
+    
+        function clearText(obj) {
+            if (obj.value == "<%=Resources.Resource.password%>")
+                obj.type = "password";
+            if (obj.value == "<%=Resources.Resource.user_name%>" || obj.value == "<%=Resources.Resource.password%>")
+                obj.value = "";
+        }
+    </script>
+	<!--Begin Bonatct Script<script type='text/javascript'>      
+	var bontactCustomer = 'XVJEQJNYXBE-NQASCDXZRA-NXZURASPFQ-MXHXYBKLRG-UVJOWLPYE';
+	var locationRoot = (('https:' == document.location.protocol) ? 'https://' : 'http://'); 
+	var newElem = document.createElement('script'); newElem.setAttribute('src', locationRoot + 'dashboard.bontact.com/widget/bontact.script.js'); 
+	newElem.setAttribute('type', 'text/javascript'); document.getElementsByTagName('head')[0].appendChild(newElem); </script>  
+	<nav id='bontact_bt-menu' class='bt-menu'><a href='#' class='bt-menu-trigger'></a><ul id='bontactmo'></ul></nav>  
+	<!--End Bonatct Script-->
+
+<%--<script type="text/javascript">
+    (function(w, d){
+        w['_brSiteId'] = 'sAIE2O';
+        function br() {
+            var i='browsi-js'; if (d.getElementById(i)) {return;}
+            var siteId = /^[a-zA-Z0-9]{1,7}$/.test(w['_brSiteId']) ? w['_brSiteId'] : null;
+            var js=d.createElement('script'); js.id=i; js.async=true;
+            js.src='//js.brow.si/' + ( siteId != null ? siteId + '/' : '' ) + 'br.js';
+            (d.head || d.getElementsByTagName('head')[0]).appendChild(js);
+        }
+        d.readyState == 'complete' ? br() :
+            ( w.addEventListener ? w.addEventListener('load', br, false) : w.attachEvent('onload', br) );
+    })(window, document);
+</script>--%>
+</head>
+<body topmargin="0" leftmargin="0"  > 
+
+<%--<!--Begin Bonatct Script--> <script type='text/javascript'>                                var bontactCustomer = 'XVJEQJNYXBE-NQASCDXZRA-NXZURASPFQ-MXHXYBKLRG-UVJOWLPYE'; var locationRoot = (('https:' == document.location.protocol) ? 'https://' : 'http://'); var newElem = document.createElement('script'); newElem.setAttribute('src', locationRoot + 'dashboard.bontact.com/widget/bontact.script.js'); newElem.setAttribute('type', 'text/javascript'); document.getElementsByTagName('head')[0].appendChild(newElem); </script>   <nav id='bontact_bt-menu' class='bt-menu'><a href='#' class='bt-menu-trigger'></a><ul id='bontactmo'></ul></nav> <!--End Bonatct Script-->
+--%>
+
+    <form id="form1" runat="server" >
+     <table id="tbMain" width="100%" cellpadding="0" cellspacing="0" dir="<%=Resources.Resource.dir%>">
+        <tr>
+            <td align="center" id="topBigMaster">
+				<div style="float:<%=Resources.Resource.align_opposite%>;padding-left:50px" class="widthInner">
+					
+                    <asp:Panel runat="server" id="panelLoginUserMaster" >
+                     <table border="0" " class="divLoginUserMaster">
+                     <tr>
+                          
+                             <td align="center" valign="middle" class="divLoginUserMaster2"> 
+                             <div  id="tdLogin" style="height:100%; line-height:40px" onclick="location.href='https://spix.co.il/login.aspx'"><label style="cursor: pointer; font-weight:bold" ><%=Resources.Resource.sign_in%></label></div>
+                             </td> 
+                              <%-- <td height="100%">   <div style="height:40px; width:1px;background:none; background-image:url('images/design/line-login.png')"></div></td> --%>
+                                
+                              <td  align="center" class="divLoginUserMaster3">   
+								<div onclick="location.href='https://spix.co.il/register.aspx'" style="height:100%;line-height:40px" >
+									<label id="tdRegister" style="cursor: pointer; font-weight:bold"><%=Resources.Resource.sign_up%></label>
+								</div>
+							</td> 
+                          
+                     </tr>
+                     </table>
+                   </asp:Panel>
+                 <asp:Panel runat="server" id="panelMailUser" >
+                     <table border="0" class="divLoginUserMaster" >
+                     <tr>
+                          
+                             <td align="center" valign="middle" class="divLoginUserMaster2"> <div  id="Div1">
+                             
+                             <asp:Button  id="Label1" runat="server" class="divLoginUserMaster2" 
+                                     style="cursor: pointer;border:none;background-color:transparent" 
+                                     onclick="logout_Click"/>
+                             </div></td> 
+                              <%-- <td height="100%">   <div style="height:40px; width:1px;background:none; background-image:url('images/design/line-login.png')"></div></td> --%>
+                                
+                              <td  align="center" valign="middle" class="divLoginUserMaster3" onclick="location.href='dashboard.aspx'">   
+								<div  >
+									<asp:Label  runat="server" id="l_mailUser"></asp:Label>
+								</div>
+							</td> 
+                          
+                     </tr>
+                     </table>
+                   </asp:Panel>
+					<div id="panel_login"  style="display:none;position:absolute;">
+                    <table  width="100%"><tr><td align="right">
+                        <div style="background-image:url('images/design/arrow.png');background-repeat:no-repeat; height:20px;">
+                            &nbsp;</div>
+                        </td><td width="80%">&nbsp;</td></tr>
+                    </table>
+                       <div class="customers">
+						 <table width="100%" cellspacing="5" cellpadding="4" dir="rtl">
+							<tr>
+								<td colspan="3"><%=Resources.Resource.sign_in%></td>
+							</tr>
+							<tr>
+								<td colspan="3"  valign="middle">
+                                <table><tr><td>
+									<img src="images\design\icons\username.png" /></td>
+                                    <td><asp:TextBox ID="txt_name"  CssClass="tbRegister" runat="server" style=" border:none"  AutoComplete="Off" > </asp:TextBox>
+                                </td></tr></table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2"  valign="middle">
+									  <table><tr><td>
+								    <img src="images/design/icons/password.png" /></td>
+                                     <td>
+								 <asp:TextBox ID="txt_pass" runat="server" CssClass="tbRegister"  style=" width:200px; margin-left:0px; border:none" AutoComplete="Off"></asp:TextBox>
+                                 </td></tr></table>
+                                 </td>
+								<td>
+								 <asp:Button   runat="server" ID="t" CssClass="yellow-button" 
+                                     Width="60px" style="padding-left:10px;" PostBackUrl="~/Login.aspx"/>
+								</td>
+							</tr>
+						 </table>
+                         </div>
+                                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                
+					</div>
+                   <div id="divLogout"  style="display:none;position:absolute; " class="divLogout" >
+                   <table>
+                    <tr>
+                        <td heigth:"50px" >
+                            <img src="images/design/account.png" />
+                            <label class="myAccount-mater" onclick="location.href='dashboard.aspx'"><%=Resources.Resource.my_account%></label>
+
+                        </td>
+                        </tr>
+                    <tr><td   >
+                        <img src="images/design/logout.png" />
+                       
+                       <asp:Button id="btnLogout" CssClass="logout-master" Width="130px
+                       " OnClick="logout_Click"  BackColor="Transparent" runat="server"  />
+                    </td></tr>
+                   </table>
+                   </div>
+							
+				</div>		
+			</td>
+	</tr>
+    <tr>
+        <td  align="center" id="header" >
+            <div  align="<%=Resources.Resource.align%>" class="widthInner">
+            <div id="menuTop">
+            
+
+
+
+						<span><input type="button" class="btRegMenu" value="<%=Resources.Resource.homepage%>"  onclick="location.href='https://spix.co.il/home.aspx'"/></span>
+						<span><input type="button" class="btRegMenu" value="<%=Resources.Resource.account%>"  onclick="location.href='https://spix.co.il/dashboard.aspx'"/></span>
+						<span><input type="button" class="btRegMenu" value="<%=Resources.Resource.about%>" onclick="location.href='https://spix.co.il/about.aspx'"/></span>
+                        <span><input type="button" class="btRegMenu" value="<%=Resources.Resource.price_list%>"  onclick="location.href='https://spix.co.il/package_site.aspx'"/></span>
+						<span><input type="button" class="btRegMenu" value="<%=Resources.Resource.contact_us%>"  onclick="location.href='https://spix.co.il/contact.aspx'"/></span>
+					</div>		
+            </div>
+        </td>
+    </tr>
+		<tr>
+			<td align="center" style=" background-repeat:repeat-x;background-image: url('images/design/bg-main.png');">
+    <%--        <div class="widthInner" style="background-image:url('images/design/shadow_header.png');height: 55px; background-repeat: repeat-x;">
+                &nbsp;</div>--%>
+				
+            
+				
+				<%--<div  style="background:rgba(228, 215, 215, 0.33); ">--%>
+<div style="background-image: url('images/design/bg-main.png');">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+       
+        
+        </asp:ContentPlaceHolder>
+        </div>
+<%--</div>--%>
+			</td>
+		</tr>
+		<tr >
+			<td align="center"  valign="top" style="background-image: url('images/design/bg-content.png');" >
+				<%-- <div class="widthInner" style="background-image:url('images/design/shadow.png'); background-repeat: repeat-x;"> &nbsp;</div>--%>
+					<div id="scrollup" class="widthInner" style="background-image:url('images/design/up.png'); background-repeat:no-repeat; width:55px; cursor:pointer">
+                        &nbsp;</div>
+                    </td></tr>
+                   
+			<tr>
+			<td align="center" id="footerUp" valign="middle">
+				
+					<div class="widthInner"   style="height:100%">
+						<table  width="100%" style="text-align:right;height:100%">
+							<tr style=" height:100%">
+                             <td align="<%=Resources.Resource.align%>" class="div-footer-title"><%=Resources.Resource.about_us%></td>		   
+                                    <td align="<%=Resources.Resource.align%>" class="div-footer-title"><%=Resources.Resource.site_map%></td>
+                                    <td align="<%=Resources.Resource.align%>" class="div-footer-title" onclick="window.location='contact.aspx'"><%=Resources.Resource.contact_us%> </td>
+                            </tr>
+						</table>
+					</div>
+				
+			</td>
+		</tr>
+        <tr>
+            <td>
+                <div style="background-color:#292A2A" align="center">
+                  <div class="widthInner" style="background-image:url('images/design/shadow.png'); background-repeat: repeat-x;">
+                      &nbsp;</div>
+                  </div>
+            </td>
+        </tr>
+		<tr>
+			<td align="center" id="footer" valign="middle">
+				
+					<div class="widthInner">
+						<table class="footerTable" border="0"  width="100%" cellpadding="4">
+							<tr>
+                            <td class="div-footer-table">
+								<!--
+                                <table>
+                                    <tr>
+                                        <td colspan="4"><label> אנחנו גאים להציג בפניכם את רשימת לקוחותינו:</label> </td>
+                                    </tr>
+                                     <tr>
+                                        <td class="div-our-customer"></td>
+                                        <td  class="div-our-customer"></td>
+                                        <td class="div-our-customer"></td>
+                                        <td class="div-our-customer"></td>
+                                    </tr>
+                                    </table>
+									-->
+									<div style="font-size: 13px;color: #686868;font-family: Arial;font-weight: bold;">
+                                    <%=Resources.Resource.the_fast_and_easy%>
+									
+										</div>
+										
+                                </td>
+								
+                                
+                                <td><img src="images/design/line-h.png" /></td>
+								<td class="div-footer-table">
+									<div id="linksFotter">
+										<table width="100%" style="text-align:<%=Resources.Resource.align%>" >
+											<tr>
+												<td><a href="https://spix.co.il/home.aspx"><%=Resources.Resource.homepage%></a></td>
+												<td><a href="https://spix.co.il/Register.aspx"><%=Resources.Resource.sign_up%></a></td>
+                                                <td><a href="https://spix.co.il/package_site.aspx"><%=Resources.Resource.price_list%></a></td>
+											</tr>
+											<tr>
+												<td><a href="https://spix.co.il/contact.aspx"><%=Resources.Resource.contact_us%></a></td>
+													<td><a href="https://spix.co.il/Login.aspx"><%=Resources.Resource.sign_in%></a></td>											
+											</tr>
+											<tr>
+												<td><a href="https://spix.co.il/about.aspx"><%=Resources.Resource.about%></a></td>
+												<td><a href="https://spix.co.il/faq.aspx"><%=Resources.Resource.questions_and_answers%></a></td>
+                                                <td><a href="http://developers.spix.co.il/"><%=Resources.Resource.developers%></a></td>
+											</tr>
+											
+										</table>
+									
+										
+									</div>
+								</td>
+                                <td><img src="images/design/line-h.png" /></td>
+								<td class="div-footer-table">
+									<div>
+                                   <div style="padding-bottom:10px;">
+                                   <label  style="font-size: 13px;text-decoration: none;color: #5b5b5b;"><%=Resources.Resource.tel%></label>
+                                   <label style="font-size: 13px;text-decoration: none;color: #FEDE27;">03-6551122</label>
+                                   <br />
+                                   <label  style="font-size: 13px;text-decoration: none;color: #5b5b5b;"><%=Resources.Resource.e_mail%></label>
+                                   <label style="font-size: 13px;text-decoration: none;color: #FEDE27;cursor:pointer" onclick="javascript:window.location.href ='mailto:sales@spix.co.il?Subject=פניה מאתר SPIX&body='">sales@spix.co.il</label>
+                                   </div> 
+										
+
+
+										<input type="button" class="B_googleplus" onclick="javascript:window.open('https://plus.google.com/105770131049035655561', '_balnk');"/>
+										<input type="button" class="B_email"  onclick="location.href='contact.aspx'"/>
+										<input type="button" class="B_facebook" onclick="javascript:window.open('https://www.facebook.com/spix.f', '_balnk');"/>
+										<input type="button" class="B_twitter"/>
+										
+									</div>
+								</td>
+								
+								
+							</tr>
+							<tr>
+								<td colspan="5">
+									<div>
+										<iframe src="https://www.facebook.com/widgets/like.php?href=https://www.facebook.com/spix.f"
+        scrolling="no" frameborder="0"
+        style="border:none; width:450px; height:30px;"></iframe>
+
+										</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				<div  style="width:100%;background-image:url('images/design/line.png'); background-repeat: repeat-x;">&nbsp;</div>
+				<div class="widthInner" style="color:#5b5b5b; font-size:8pt">
+					<table width="100%" style="text-align:right">
+							<tr>
+								<td width="33%" >All rights reserved:
+                                <span class="txtfooter"> Red-E tech</span></td>
+								<td width="33%">&nbsp;</td>
+								<td align="left">Developer by:
+                                <span class="txtfooter"> Red-E tech,</span> Design by:
+                               <a class="txtfooter" 
+ href="https://estys.co.il/"target="_blank" >Esty Shina </a>
+</td>							</tr>
+						</table>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td id="lineFotter">
+				
+			</td>
+		</tr>
+		<tr>
+			<td style="background-image:url('/images/design/shadow-header.png'); background-repeat: repeat-x;">
+			
+			</td>
+		</tr>
+	</table>
+    </form>
+	<!-- Google Code for &#1514;&#1490; &#1513;&#1500; &#1513;&#1497;&#1493;&#1493;&#1511; &#1502;&#1495;&#1491;&#1513; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+
+
+
+
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/989445501/?value=0&amp;label=ccXiCKOizw0Q_frm1wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,1004 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="stepty.aspx.cs" Inherits="stepty" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.Triggersw3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
+<head runat="server">
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+
+		<title>jQuery Stepy - A Wizard Plugin</title>
+
+		<link type="text/css" rel="stylesheet" href="css/jquery.step.css" />
+
+		  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+		<!-- Optionaly -->
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.stepy.min.js"></script>
+  <link href="js/themes/base/jquery.ui.dialog.css" rel="stylesheet" type="text/css" />
+    <link href="js/themes/base/jquery.ui.theme.css" rel="stylesheet" type="text/css" />
+    <link href="js/themes/base/jquery.ui.button.css" rel="stylesheet" type="text/css" />
+    <link href="js/themes/base/jquery.ui.core.css" rel="stylesheet" type="text/css" />
+   	
+			<link href="css/css.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			/* This CSS does not belong to the plugin. */
+			body { background: url('img/background.gif'); font: normal 11px verdana; }
+			
+			a { color: #2C8CBD; text-decoration: none; }
+			a:hover { color: #48A5D4; }
+			
+			a#coffee {
+				background: url('img/coffee.png') 6px 2px no-repeat #DC5; border: 1px solid #D9C640; color: #FFF; display: block; float: right; font-size: 10px; font-weight: bold; letter-spacing: .9px; margin-right: 9px; padding: 4px 5px 4px 26px; text-decoration: none;
+				-khtml-border-radius: 4px; -moz-border-radius: 4px; -opera-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+			}
+			a#coffee:hover { text-decoration: underline; }
+			
+			span.comment { color: #999; font: 12px monospace; letter-spacing: .1px; margin-bottom: 7px; margin-top: 5px; }
+			
+			div#content { background-color: #FFF; border: 1px solid #DEDEDE; box-shadow: 0 1px 3px rgba(100, 100, 100, 0.4); margin: 0 auto; padding: 15px; width: 1100px; min-height: 510px; }
+			
+			div.description { color: #555; letter-spacing: .1px; margin-bottom: 15px; margin-top: 10px; text-align: left; }
+			
+			div.description-code { color: #555; letter-spacing: .1px; margin-bottom: 10px; text-indent: 7px; }
+
+			div#menu-feature { color: #AAA; float: left; margin-bottom: 20px; }
+			div#menu-feature a { float: left; width: 120px }
+			div#menu-feature a.disabled { color: #999; cursor: default; }
+			div#menu-feature a.selected { color: #2C8CBD; cursor: default; font-weight: bold; }
+
+			div#footer { clear: both; height: 25px; margin-top: 5px; width: 100%; }
+			div#footer div#copy { margin: 0 auto; text-align: center; width: 1100px; }
+			
+			div#header { margin: 0 auto; padding-left: 20px; width: 1130px; }
+			
+			div#menu { color: #AB9927; font: bold 14px 'Lucida Grande', 'Helvetica', 'Times New Roman', serif; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
+			div#menu a { color: #EA9C00; font: bold 10px verdana; letter-spacing: .9px; text-decoration: none; }
+			div#menu a:hover { color: #DC5; font-weight: bold; letter-spacing: .9px; text-decoration: underline; }
+			
+			div.session { clear: both;  font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; margin-top: 24px; text-align: left; }
+			div.session-first { clear: both; font: bold 13px verdana; border-bottom: 1px solid #EFEFEF; color: #444; letter-spacing: .7px; margin-bottom: 18px; text-align: left; }
+			div.session-mini { font: bold 10px verdana; color: #444; letter-spacing: .7px; margin-top: 17px; }
+			
+			div.source { background: #F8F8FF; border: 1px solid #EFEFEF; border-left: 3px solid #CCC; clear: both; color: #444; font: 12px monospace; border-radius: 2px; letter-spacing: .1px; margin-bottom: 7px; margin-top: 15px; padding: 7px; width: 1081px; -khtml-border-radius: 2px; -moz-border-radius: 2px; -opera-border-radius: 2px; -webkit-border-radius: 2px; }
+			div.source div.comment { color: #777; font: 9px verdana; letter-spacing: 0.4px; margin-bottom: 9px; text-align: left; }
+			
+			div#title { font: bold 17px verdana; color: #269; letter-spacing: .7px; margin-bottom: 10px; text-align: left; }
+			div#title span { color: #777; font: 10px verdana; }
+			
+			span#version { color: #777; font: 10px verdana; }
+
+			/* Custom */
+			form#target fieldset img { margin-top: 10px; }
+
+			div#title-target { height: 25px;  margin-left: 215px; margin-top: 2px; }
+			div#title-target ul.stepy-titles li { font-size: 12px; padding: 4px; }
+			div#title-target ul.stepy-titles li:hover { color: #BBB; }
+			div#title-target ul.stepy-titles li.current-step { color: #369; }
+
+			/* Example of dynamic class name */
+			p.default-buttons {  }
+		</style>
+
+		<script type="text/javascript">
+		var iffound=false;
+        var startInterval;
+        var temp;
+        var numTemp=1;
+		
+		
+  function callByPhone()
+{
+           var x=document.getElementById("TBrecordNumPhone").value;
+//            if (x==null || x=="")
+// 		        return false;     
+       	    if(isNaN(x)|| x.indexOf(" ")!=-1||x.length > 10||x.length<9)
+	        {
+                alert("���� ����");
+            }
+       	    else
+       	    {
+                numTemp++;
+                    var phoneNumber=document.getElementById("TBrecordNumPhone");
+	                $("#callNow").dialog('open');
+                    //Ajax
+                   // alert("phoneNumber: "+phoneNumber.value);
+                    
+                     $.ajax({ type: "GET", url: "streamFile.aspx?record=1&number="+phoneNumber.value+"&temp="+numTemp, crossDomain: true, success: function (result) {
+                           // alert("result: "+result);
+                            temp=result;
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            alert("thrownError: "+thrownError);
+                        }        });
+                    
+
+                    startInterval=setInterval("ifFileExist(temp)",5000);
+        }
+}
+        var filename;
+        function ifFileExist(temp)
+        {
+        //var nameFile=document.getElementById("HidNameFile");
+             numTemp++;   
+            //alert("begin");
+                $.ajax({ type: "GET",
+                 url: "streamFile.aspx?check=1&nameFile="+temp+"&numTemp="+numTemp,
+                  crossDomain: true,
+                   success: function (result)
+                    {
+                    //alert(result);
+                    if(result=="true"||result=="True")
+                    {
+                            filename=result;
+                            // alert("Record file OK");
+                             //alert("file: "+temp);
+                             clearInterval(startInterval);
+                             AudioPlayer.embed('audioplayer_N', { 
+                            soundFile: 'streamFile.aspx?streamFile='+ temp});
+                            document.getElementById("HidNameFile").value=1;
+                            clearInterval(startInterval);
+							document.getElementById("bgCallNow").innerHTML="������ ������";
+							document.getElementById("bgCallNow").style.background="none";
+							document.getElementById("bgCallNow").style.fontSize="30pt";
+							setTimeout("$('#callNow').dialog('close');",3000);
+                    }
+                }, error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError);
+                }        });
+            
+
+        }
+        function ValidatePhoneNumber()
+        {
+
+             var x = document.getElementById("TBaddPhone").value;
+    
+        
+//            if (x==null || x=="")
+// 		        return false;     
+       	    if(isNaN(x)|| x.indexOf(" ")!=-1||x.length > 10||x.length<9)
+	        {
+                alert("���� ����");
+			    return false;
+            }
+       	    return true;
+       	    	    
+        }
+		function chooseUpFile(type)
+		{
+			var divUpload=document.getElementById("divRecordByPhone");
+			var divRecord=document.getElementById("divUpload");
+			if(type==1)
+			{
+				divUpload.style.display="none";
+				divRecord.style.display="inline";
+			}
+			else
+			{
+				divUpload.style.display="inline";
+				divRecord.style.display="none";
+			}
+		}
+		function chooseListMailing(type)
+		{
+			var divMain=document.getElementById("divMaillistDefualt");
+			var divSetList=document.getElementById("divMaillist");
+			if(type==1)
+			{
+				divMain.style.display="none";
+				divSetList.style.display="block";
+			}
+			else if(divMain.style.display=="none")
+			{
+				divMain.style.display="block";
+				divSetList.style.display="none";
+				return false;
+			}
+			return true;
+		}
+		
+		function  selectMoreOptions()
+			{
+				//alert(2);
+				var typeUpload=document.getElementsByName("groupMore");
+				if(typeUpload[0].checked)
+				{
+					document.getElementById("lblMore").innerHTML="��� �����";
+				}	
+				else if(typeUpload[1].checked)
+				{
+					document.getElementById("lblMore").innerHTML="�����: ����� ����� �����";
+				}
+				else
+				{
+					document.getElementById("lblMore").innerHTML="�����: ����� ����";
+				}
+				return true;
+			}
+			
+			$(document).ready(function() {
+			   $('#dialogNew').dialog({
+					autoOpen: false,
+					modal: true,
+					resizable: false,
+					closeOnEscape: true,
+					sticky: true,
+					buttons: {
+						"��� �����": function () {
+							$(this).dialog("close");
+							createNewListPersons();
+							return true;
+						},
+						"�����": function () {
+							$(this).dialog("close");
+							return false;
+						}
+					}
+				});
+				$('#editMailList').dialog({
+					autoOpen: false,
+					modal: true,
+					resizable: false,
+					closeOnEscape: true,
+					sticky: true,
+					title:"����� ���� ��� ���",
+					buttons: {
+						"���� �����": function () {
+							$(this).dialog("close");
+							updatePerson();
+							return true;
+						},
+						"�����": function () {
+							$(this).dialog("close");
+							return false;
+						}
+					}
+				});
+				
+				$('#DivImportFromExcel').dialog({
+					autoOpen: false,
+					modal: true,
+					resizable: false,
+					closeOnEscape: true,
+					sticky: true,
+					width:"500px",
+					//height: "400px",
+					title:"���� ����� ���� ���",
+					buttons: {
+						"�����": function () {
+							$(this).dialog("close");
+							
+							return true;
+						},
+						"�����": function () {
+							$(this).dialog("close");
+							return false;
+						}
+					}
+				});
+				$('#divDeletePerson').dialog({
+					autoOpen: false,
+					modal: true,
+					resizable: false,
+					closeOnEscape: true,
+					sticky: true,
+					width:"200px",					
+					title:"����� ��� ���",
+					buttons: {
+						"��� �������": function () {
+							$(this).dialog("close");
+							deletePerson(true);
+							return true;
+						},
+						"��� ������ ����� ��": function () {
+							$(this).dialog("close");
+							deletePerson(false);
+							return false;
+						}
+					}
+				});
+				
+				$('#callNow').dialog({
+					autoOpen: false,
+					modal: true,
+					resizable: false,
+					closeOnEscape: false,
+					sticky: true,
+					width:"450px",
+					title:"����� ��� ��� ������",
+					buttons: {}
+					
+				});
+				
+			 });
+			 function deletePerson(deleteFromDB)
+			{
+			    var idperson=document.getElementById("HFidPerson").value;
+			    var nameperson=document.getElementById("namePerson").value;
+			    var phonePerson=document.getElementById("phonePerson").value;
+			    var ddllist= window.document.getElementById("DDLmailingList");
+                var idCategory= ddllist.options[ddllist.selectedIndex].value;
+                var retStatus=false;
+                if(deleteFromDB)
+                {
+                     $.ajax({ type: "GET", url: "streamFile.aspx?deletePerson=1&idPerson="+idperson+"&namePerson="+nameperson+"&phonePerson="+phonePerson+"&idCategory="+idCategory, crossDomain: true, success: function (result) {
+                       if(result=="true"||result=="True")
+                       {
+                         retStatus  =true;
+                        }
+                        
+                         }});
+                        } 
+                else
+                {
+                    retStatus=true;
+                }
+                if(retStatus)
+                {
+                    var rowid=document.getElementById("rowid_"+idperson);
+                    rowid.innerHTML="";
+                    //����� �����
+                }
+			}
+			
+			function updatePerson()
+			{
+			        //1. read id+name+phone from div-dialog.
+			        var idperson=document.getElementById("HFidPerson").value;
+			        var nameperson=document.getElementById("namePerson").value;
+			        var phonePerson=document.getElementById("phonePerson").value;
+			        var ddllist= window.document.getElementById("DDLmailingList");
+                    var idCategory= ddllist.options[ddllist.selectedIndex].value;
+                    alert(idCategory);
+			        //4. ajax - upadte.
+			         $.ajax({ type: "GET", url: "streamFile.aspx?updatePerson=1&idPerson="+idperson+"&namePerson="+nameperson+"&phonePerson="+phonePerson+"&idCategory="+idCategory, crossDomain: true, success: function (result) {
+                           if(result=="true"||result=="True")
+                           {
+                               //var idperson=document.getElementById("HFidPerson").value;
+			                    var nameP=document.getElementById("name_"+idperson);
+			                    var phoneP=document.getElementById("phone_"+idperson);
+			                    nameP.innerHTML=nameperson;
+			                    phoneP.innerHTML=phonePerson;
+                            }
+                            }, error: function (xhr, ajaxOptions, thrownError) 
+                                {
+                                alert("thrownError: "+thrownError);
+                                }
+                                   
+                         });
+			//if(return true
+			
+			//2. find by id - gridview
+			//3. innerHtml
+			
+			}
+			
+			
+		function openDialogNewList() {
+                 $("#dialogNew").dialog('open');            
+         }
+         function opendivDeletePerson()
+         {
+            $("#divDeletePerson").dialog('open');
+         }
+		 function openDialogEditMailList(idperson,phone,nameperson) {
+                 $("#editMailList").dialog('open');  
+                 document.getElementById("HFidPerson").value=idperson;          
+                 document.getElementById("namePerson").value=nameperson;          
+                 document.getElementById("phonePerson").value=phone;          
+         }
+		 function openDialogImportList() {
+                 $("#DivImportFromExcel").dialog('open');            
+         }
+		 function createNewListPersons()
+		 {
+			alert(document.getElementById("txtNewList").value);
+		 }
+		</script>
+	</head>
+	<body>
+	<form runat="server">
+	<asp:ScriptManager ID="ScriptManager1" runat="server" />
+	
+<div id="callNow" title="����� ��� ��� ������">
+        <div id="bgCallNow" style="background-image: url( 'http://chat.bontact.com/Images/loading2.gif' );width:402px; height:402px;">&nbsp;</div>
+                               
+    </div>
+	
+<div id="dialogNew" title="��� ����� ���� ���">
+        <table>
+            <tr>
+                <td>��� �� ������ ���� ���</td>
+            </tr>
+            <tr>
+                <td><input style="width:200px; font-size:12pt; font-style: italic;" type="text" id="txtNewList" /></td>
+            </tr>
+        </table>
+    </div>
+
+		<div id="content" style="width:530px;">
+			<!--<div id="checkbox-default-demo" class="session-first">With default options using checkbox:</div>-->
+		<div class="divLevels" id="projectDetails" style="display: inline; ">
+			<div id="default" >
+				<fieldset title="��� 1">
+					<legend>��� ����� �����</legend>
+					<table cellpadding="10" cellspacing="5" class="tbWizard">
+                                     <tr>
+                                        <td colspan="2" align="center">
+                                            <span class="div-title">
+                                                ���� ��� ���� ����� ����� ����� ������ ������ �����</span>
+                                        </td>                                        
+                                    </tr>
+									<tr>
+										<td colspan="2">�� ��� ���� ������</td>
+									</tr>
+                                    <tr>
+                                        <td>
+                                            <label for="name">
+                                                ����:</label>
+                                        </td>
+                                        <td align="right">
+                                            <asp:TextBox ID="tbnameProject" CssClass="textbox" runat="server" Width="234px"></asp:TextBox>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr style="display:none">
+                                        <td align="right">
+                                            <label>
+                                                ��� �������</label>
+                                        </td>
+                                        <td align="right">
+                                            <asp:DropDownList ID="DDLtypeProject"  CssClass="textbox" runat="server" 
+                                                Width="234px" >
+                                            </asp:DropDownList>
+                                        </td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        
+                                            <asp:CheckBox ID="chooseExistingProject" runat="server" Text="&nbsp; ����� ������ ����" 
+                                                oncheckedchanged="chooseExistingProject_CheckedChanged" 
+                                                AutoPostBack="True" />
+                                        
+                                          
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="DDLexistingProjects" runat="server" Width="234px">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <p>��� ������� �� ���� ������ ������ ������ ������ �����</p>
+                                        </td>
+                                    </tr>
+                                </table>
+				</fieldset>
+				
+				<fieldset title="��� 2">
+					<legend>���� �����</legend>
+					 <div class="divLevels" id="recorde">
+                        <table cellpadding="5" cellspacing="5" width="100%" class="tbWizard">
+                            <tr>
+                                        <td colspan="2">
+                                            <span class="div-title">
+                                                ��� ��� ����������</span>
+                                        </td>
+                                        
+                                    </tr>
+							<tr>
+								<td>
+									<input checked="checked" onclick="chooseUpFile(2);" type="radio" name="group1" value="1">���� ������� ������</input>
+								</td>
+								<td>
+									<input onclick="chooseUpFile(1);" type="radio" name="group1" value="1">��� ����</input>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2"><hr/></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div id="divRecordByPhone" >
+										<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <table cellpadding="5" cellspacing="5">
+                                   
+                                    
+                                    <tr>
+                                        <td>
+                                            
+                                                �� ��� �� ���� ������ ������� ���� ������, ������ ����� ������
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                             <input id="Button1" type="button" value="����" class="Cbutton" onclick="callByPhone();"/>
+                                            <asp:TextBox ID="TBrecordNumPhone" CssClass="textbox" runat="server"></asp:TextBox>
+                                            <asp:HiddenField ID="HidNameFile" runat="server" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                       
+                                        <script src="player/audio-player.js" type="text/javascript"></script>
+                                          <script type="text/javascript">
+                                               AudioPlayer.setup("player.swf", {
+                                                   width: 390
+                                               });  
+                                           </script>
+
+											<p id='audioplayer_N'></p>
+
+											<%--<script type='text/javascript'>
+											 AudioPlayer.embed('audioplayer_N', { 
+											 soundFile: 'streamFile.aspx?streamFile=go'});
+											 </script>--%>
+                                            
+                                            <asp:Label runat="server" ID="lblCallRecoirdMsg" Text="������ ����� ������" Visible="False" />
+                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+									</div>
+									<div id="divUpload" style="display:none">
+										
+										<table cellpadding="5" cellspacing="1">
+                           
+                            
+                            <tr>
+                                <td>
+                                    ��� ��� �� ����� ����� (������ mp3 �� wav)
+                                </td>
+                            </tr>
+                            <tr>
+                            
+                                <td align="center">
+                                <%--<input type="button" id="uploadFile" value="Upload File" onclick="return uploadFile_onclick()" />--%>&nbsp;
+                                      <div id="Div1" >
+		                                    <input style="width:400px;" class="Cbutton" type="file" name="images" id="images"  />
+    		                                <button type="submit" id="btn">Upload Files!</button>
+    	                                
+                                  	<div id="response"></div>
+		                                <ul id="image-list">
+                                 
+		                                </ul>
+	                                </div>
+                                   <%-- <asp:FileUpload ID="FileUploadAuodio" class="uploadfile" runat="server" />--%>
+         
+		
+                                </td>
+                            </tr>
+							<tr>
+								<td>
+									<p id='audioplayer_N2'>No Media Player</p>
+        
+								</td>
+							</tr>
+                        </table>
+             
+                        
+  <!--<script type="text/javascript" src="upload.js"></script>-->
+                        
+                     
+                        				
+									</div>
+								</td>
+							</tr>
+							</table>
+							<table style="display:none">
+                            <tr>
+                                <td>
+                                    <label id="nameP1"></label>
+                                    <%--<span name="txtProjectName">�� ������</span>--%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:RadioButtonList TextAlign="Right" ID="CBrecrdType" runat="server" Width="406px"
+                                        Height="167px">
+                                        <asp:ListItem Enabled="false" Text="<span class='radio' >���� ������� ��������</span>" Value="3" />
+                                        <asp:ListItem Text="<span class='radio'>���� ������� ���� �����</span>" Value="4" />
+                                        <asp:ListItem Text="<span class='radio'>��� ���� ���</span>" Value="5" />
+                                    </asp:RadioButtonList>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+				</fieldset>
+				
+				
+				<fieldset title="��� 3">
+					<legend>��� ������</legend>
+					<div class="divLevels" id="insertPhoneNumber" >
+                        
+								
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                        <ContentTemplate>
+								<table id="divMaillist" style="display:none" cellpadding="1" cellspacing="1"  class="tbWizard">
+                                    <tr>
+                                        <td colspan="2">
+                                            <label class="div-title">��� ����� �����</label>
+											&nbsp;
+											<asp:DropDownList ID="DDLmailingList" runat="server" CssClass="textbox"  OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"
+                                                AutoPostBack="True" >
+                                            </asp:DropDownList>
+											&nbsp;&nbsp;
+											<input type="button" value="+" class="Cbutton" style="width:30px" onclick="openDialogEditMailList()"/>��� ���
+                                        </td>
+                                    </tr>
+									<tr>
+                                        <td colspan="2"><hr/></td>
+									</tr>
+									<tr>
+									
+										<td width="40%" colspan="2" align="center">
+											
+                                             &nbsp;</td>
+									</tr>
+                                    <tr>
+										<td colspan="2" align="center">
+											<input type="button" style="width:200px;background-color: #1B1818;" onclick="openDialogImportList()" class="Cbutton" value="��� ����� ����"/>
+										</td>
+									</tr>
+  
+                                    <tr style="display:none">
+                                        <td valign="top" style="border:thin solid black">
+                                            <label runat="server" >��� ����� �����:</label>
+                                            <br />
+                                            
+                                            <br />
+                                            <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" 
+                                                OnCheckedChanged="CheckBox1_CheckedChanged" Text="��� ���" />
+                                             <asp:Panel runat="server" ScrollBars="Auto">
+                                                
+                                             <%--    <asp:CheckBoxList ID="CheckBoxList1" runat="server" AutoPostBack="True" 
+                                                OnSelectedIndexChanged="CheckBoxList1_SelectedIndexChanged" 
+                                                TextAlign="Right"  >
+                                            </asp:CheckBoxList>--%></asp:Panel>
+                                           
+                                        </td>
+                                        <td style="border:thin solid black" valign="top">
+											
+                                            <label runat="server" >���� ����� �����:</label>
+                                            <br />
+                                            
+                                        </td>
+                                    </tr>
+                                   
+                                 
+                                </table>
+                                </ContentTemplate>
+                                </asp:UpdatePanel>
+                         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <table id="divMaillistDefualt" cellpadding="5" cellspacing="5" class="tbWizard" width="99%">
+                                    
+                                    <tr>
+                                        <td colspan="2">
+                                        <label id="nameP5"></label>
+                                            <%--<span  name="txtProjectName">�� ������</span>--%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <label>
+                                                ��� ��� ����� ����� ������� �� ���
+                                            </label>
+                                          
+                                            <span   onclick="chooseListMailing(1)"<%--onclick ="checkOkPass()"--%>>
+                                                <label style="color: Blue; cursor:pointer">
+                                                    ����� �����</label></span>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td valign="middle" width="60%">
+											
+											<div>
+												��� ���� ����� ����� ������
+											</div>
+                                            <asp:TextBox ID="TBaddPhone" CssClass="textbox" runat="server" Width="180px"></asp:TextBox>
+                                            <asp:Button ID="b_addPhone" runat="server" CssClass="Cbutton" Width="40px"
+                                                OnClick="b_addPhone_Click" Text=">>" onClientClick="return ValidatePhoneNumber(add)"/>
+                                            
+                                            
+                                                <br />
+												<div style="padding-top:10px;">
+												<label>�"� 5 ������</label>
+											</div>
+                                                <asp:HiddenField ID="HfInsertOrChoose" runat="server" />
+                                            <asp:HiddenField ID="hfNumAddressee" runat="server" />
+                                        </td>
+                                        <td  valign ="top" width="40%" align="center">
+                                            
+                                            <asp:ListBox ID="LBaddPhone" runat="server" Height="235px" Width="220px" SelectionMode="Multiple"></asp:ListBox>
+                                            <br />
+                                            <asp:Button ID="BdeleteItemListBox" runat="server" CssClass="Cbutton" 
+                                                onclick="BdeleteItemListBox_Click" Text="��� �������" />
+                                        </td>
+                                    </tr>
+ 
+                                   <%-- <tr>
+                                        <td>
+                                            <asp:TextBox ID="TBaddPhone" CssClass="textbox" runat="server"></asp:TextBox>
+                                        </td>
+                                        <td rowspan="2" valign ="top">
+                                            <asp:ListBox ID="LBaddPhone" runat="server" Height="106px"  ></asp:ListBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <asp:Button ID="b_addPhone" CssClass="Cbutton" runat="server" Text="����" OnClick="b_addPhone_Click" />
+                                        </td>
+                                    </tr>--%>
+     
+                                </table>
+								</ContentTemplate>
+                        </asp:UpdatePanel>
+                        <div id="divDeletePerson">
+                            <span>��� ������ ����� ������� �� ��� ����?</span>
+                        </div>
+								<div id="editMailList">
+											<table width="100%" cellspacing="10">
+												<tr>
+													<td colspan="2" align="center">
+														<input type="button" value="+" class="" style="width:30px"/>����
+													
+													</td>
+												</tr>
+												<tr>
+													<td>��:</td>
+													<td>
+                                                        <asp:TextBox ID="namePerson" runat="server" class="textbox" ></asp:TextBox>
+													<%--<input id="namePerson" class="textbox"/>--%>
+													</td>
+												</tr>
+												<tr>
+													<td>�����:</td>
+													<td>
+													<%--<input id="phonePerson" class="textbox"/>--%>
+													
+                                                        <asp:TextBox ID="phonePerson" runat="server" class="textbox"></asp:TextBox><asp:HiddenField ID="HFidPerson" runat="server" />
+                                                    </td>
+												</tr>
+												<tr>
+													<td colspan="2" align="center">
+											
+                                             <asp:GridView ID="GridView1" runat="server" Height="235px" Width="440px" AutoGenerateColumns="false" 
+                                                     BorderStyle="None" OnRowDataBound="GridView1_RowDataBound">
+                                                         <Columns>
+                                                                <asp:BoundField  DataField ="id" HeaderText="id"/>
+                                                                  <asp:BoundField  DataField ="phone" HeaderText="����"/>
+                                                                  <asp:BoundField  DataField ="name" HeaderText="��"/>
+                                                                  <asp:BoundField   HeaderText="����"/>
+                                                                  <asp:BoundField   HeaderText="���"/>
+                                                         </Columns>
+                                                 </asp:GridView>
+                                                        <asp:Button ID="Button2" onclick="Button2_Click"  runat="server" Text="����"  style="width:80px; font-size:10pt" class="Cbutton" />
+                                                        
+														<%--<input style="width:80px; font-size:10pt" type="button" value="����" class="Cbutton"/>--%>
+														<input style="width:80px; font-size:10pt" type="button" value="���" class="Cbutton"/>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<div id="DivImportFromExcel" style="width:400px; height:300px; font-size:10pt">
+											<table width="100%" cellspacing="10">
+												<tr>
+													<td colspan="2" align="center">
+														��� ���� ���� ����� �� ���� ����, ��� ������ ���
+													</td>
+												</tr>
+												<tr>
+												<td colspan="2" align="center">
+													<asp:Label ID="LinsertCategoryName"  runat="server" Text="��:"></asp:Label>
+                                            
+                                            <asp:TextBox ID="TbCategoryNameExcel" runat="server" CssClass="textbox"></asp:TextBox>
+                                            <br />
+                                            <asp:FileUpload ID="FileUploadExcel" runat="server" Width="217px" />	</td>
+												</tr>
+											</table>
+										</div>
+                            
+                    </div>
+				</fieldset>
+				<fieldset title="��� 4">
+					<legend>������</legend>
+					 <div class="divLevels" id="postVoiceMail" >
+                        <table cellpadding="10" cellspacing="5" class="tbWizard">
+                            <tr>
+                                <td colspan="2">
+                                    <label class="div-title">
+                                      �������� ������ ��� ���������� �����:</label>
+                                </td>
+                            </tr>
+                           <tr>
+                                <td>
+                                    <input onchange="selectMoreOptions()" type="radio" name="groupMore" value="0" checked="checked"/><label>��� ������</label>
+                                </td>
+                                <td>
+                                    <span>����� ����� ����. ���� ������ ����� ����� ���� ������ ������� ������ �����</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%">
+                                    <input type="radio" onchange="selectMoreOptions()" name="groupMore" value="1"/><label>��� ����� ���� �����</label>
+                                </td>
+                                <td>
+                                    <span>
+                                        ���� ������ ����� ����� ���� ����� �� ���� �� ������</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" onchange="selectMoreOptions()" name="groupMore" value="2"/><label>���� ����</label>
+                                </td>
+                                <td>
+                                    <span>
+                                        ���� ������ ����� ���� ������ ������ �����. ����� ���� ����� �� ������ �������</span>
+                                </td>
+                            </tr>
+                            
+                            
+                        </table>
+                    </div>
+				</fieldset>
+				<fieldset title="��� 5">
+					<legend>��� �����</legend>
+					 <div class="divLevels" id="postVoiceMail" >
+                        <table cellpadding="5" cellspacing="5" class="tbWizard">
+                            <tr>
+                                <td colspan="2">
+                                    <label class="div-title">�����:</label>
+                                </td>
+                            </tr>
+                           
+                            <tr>
+                                <td colspan="2">
+                                    <label>������ ����� �� X ������</label>
+                                </td>
+                            </tr>
+							<tr>
+                                <td colspan="2">
+                                    <label id="lblMore">������: ���</label>
+                                </td>
+                            </tr>
+							<tr>
+								<td>
+									<span>���� ���� �����: ������ ������ � 20 ������ - ���� ������ ������� </span>
+								</td>
+								<td>
+									<span>���� ������ ���: 33 ������</span>
+								</td>
+							</tr>
+							<tr>
+                                <td colspan="2" align="center">
+                                    <asp:Button ID="B_send" CssClass="Cbutton" Width="400px" Height="50px" runat="server" Text="��� - ���� ������ ���" OnClick="B_send_Click" />
+                                </td>
+                            </tr>
+							
+							
+                            <tr>
+                                <td colspan="2">
+                                    <asp:Label ID="l_nameFile" runat="server" Text=""></asp:Label>                                    
+                                   <asp:Label ID="l_numAddress" runat="server" Text=""></asp:Label>                                    
+                                </td>
+                            </tr>
+                            <tr style="display:none">
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <asp:Button ID="B_save" CssClass="Cbutton" runat="server" Text="����" OnClick="B_save_Click" />
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+				</fieldset>
+				
+	</div>
+	
+	</div>
+	
+	</div>
+				
+			</form>
+
+		<script type="text/javascript">
+			$(function() {
+
+				$('#default').stepy({
+				description:  true,
+				legend:       true,
+				 backLabel:      '<�����',
+				  block:          true,
+				  errorImage:     true,
+				  finishButton:   true,
+				  nextLabel:      '���>',
+				  titleClick:     true,
+				  validate:       true,
+				  back: function(index) {
+						switch(index)
+						{
+						case 2:
+							return chooseListMailing(2);
+							 
+							break;
+						}
+					}, 
+					next: function(index) {
+						switch(index)
+						{
+							
+							case 2:
+							return validateStep1();
+							break;
+							case 3:
+							return validateStep2();
+							break;
+							case 4:
+							return validateStep3();
+							break;
+							case 5:
+							return validateStep4();
+							break;
+							
+						}
+					}
+				});
+
+				
+			});
+			
+			function validateStep1()
+			{
+				if(document.getElementById ('tbnameProject').value == "") 
+				{
+                    alert("���� �� ������!");
+                    return false;
+                }
+                else
+				    return true;
+			}
+			function validateStep2()
+			{
+//				//alert(2);
+//				var typeUpload=document.getElementsByName("group1");
+//				if(typeUpload[0].checked)
+//				{
+//					//alert("by calls checked");
+//				}				
+//				if( document.getElementById("HidNameFile").value==0)
+//				{
+//				    alert("��� �� ���� �����!");
+//				    return false;
+//				    }
+//			    else
+				    return true;
+			}
+			function validateStep3()
+			{
+				var listPhone= document.getElementById('LBaddPhone');
+                if (listPhone!=null)
+                    return true;
+                else 
+                    return false;
+			}
+			function validateStep4()
+			{
+				//alert("err...");
+				return true;
+			}
+			
+		</script>
+	</body>
+</html>
